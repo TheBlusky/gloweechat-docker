@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  glowingbear:
+    image: blusky/gloweechat:latest
+    ports:
+      - "8080:80" 
+    tty: true
+    volumes:
+      - "/docker/gloweechat/weechat:/weechat/.weechat"
+    links:
+      - bitlbee
+    depends_on:
+      - bitlbee 
+
+  bitlbee:
+    image: blusky/bitlbee:latest
+    volumes:
+      - "/docker/gloweechat/bitlbee:/var/lib/bitlbee"
