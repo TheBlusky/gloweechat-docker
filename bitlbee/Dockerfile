@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install bitlbee bitlbee-dev
 RUN bash -c "echo deb http://download.opensuse.org/repositories/home:/jgeboski/Debian_9.0 ./ >> /etc/apt/sources.list.d/jgeboski.list"
 RUN bash -c "wget -O- https://jgeboski.github.io/obs.key | apt-key add -"
 RUN apt-get update && apt-get -y install bitlbee-facebook
-COPY bitlbee.conf /etc/bitlbee/bitlbee.conf
+COPY bitlbee/bitlbee.conf /etc/bitlbee/bitlbee.conf
 
 # Discord
 RUN apt-get update && apt-get -y upgrade && apt-get -y install git autotools-dev autoconf libtool libglib2.0-dev make
