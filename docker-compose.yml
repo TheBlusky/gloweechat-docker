@@ -3,18 +3,21 @@ version: '3'
 services:
 
   glowingbear:
-    image: blusky/gloweechat:latest
-    ports:
-      - "8080:80" 
+    image: gloweechat-docker:glowingbear
+    restart: always
+    links:
+      - weechat
+
+  weechat:
+    image: gloweechat-docker:weechat
+    restart: always
     tty: true
     volumes:
-      - "/docker/gloweechat/weechat:/weechat/.weechat"
-    links:
-      - bitlbee
-    depends_on:
-      - bitlbee 
+      - "/docker/glowing-bear/weechat:/weechat/.weechat"
 
   bitlbee:
-    image: blusky/bitlbee:latest
+    image: gloweechat-docker:bitlbee
+    restart: always
     volumes:
-      - "/docker/gloweechat/bitlbee:/var/lib/bitlbee"
+      - "/docker/glowing-bear/bitlbee:/var/lib/bitlbee"
+
