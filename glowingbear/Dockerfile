@@ -6,7 +6,7 @@ RUN cd /usr/share/nginx/\
     && mv html html.old\
     && mv glowing-bear html
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY glowingbear/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
